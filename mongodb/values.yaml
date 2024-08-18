@@ -293,7 +293,7 @@ enableJournal: true
 ##     path: /opt/bitnami/mongodb/logs/mongodb.log
 ##     verbosity: 0
 ##   # network interfaces
-##   net:
+##   network:
 ##     port: 27017
 ##     unixDomainSocket:
 ##       enabled: true
@@ -481,7 +481,7 @@ podSecurityContext:
   ## sysctl settings
   ## Example:
   ## sysctls:
-  ## - name: net.core.somaxconn
+  ## - name: network.core.somaxconn
   ##   value: "10000"
   ##
   sysctls: []
@@ -1276,7 +1276,7 @@ arbiter:
     ## sysctl settings
     ## Example:
     ## sysctls:
-    ## - name: net.core.somaxconn
+    ## - name: network.core.somaxconn
     ##   value: "10000"
     ##
     sysctls: []
@@ -1593,7 +1593,7 @@ hidden:
     ## sysctl settings
     ## Example:
     ## sysctls:
-    ## - name: net.core.somaxconn
+    ## - name: network.core.somaxconn
     ##   value: "10000"
     ##
     sysctls: []
