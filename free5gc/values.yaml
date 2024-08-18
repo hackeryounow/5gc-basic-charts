@@ -1,0 +1,559 @@
+
+network5GName:
+  full: lab226free5gc
+  short: lab5gc
+
+mongodb:
+  enabled: true
+  auth:
+    enabled: false
+amf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/amf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    amfName: AMF  # the name of this AMF
+    ngapIpList: ""  # the IP list of N2 interfaces on this AMF
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    servedGuamiList:
+      - plmnId:
+          mcc: 999
+          mnc: 70
+        amfId: cafe00
+    supportTaiList:
+      - plmnId:
+          mcc: 999
+          mnc: 70
+        tac: "000001"
+    plmnSupportList:
+      - plmnId:
+          mcc: 999
+          mnc: 70
+        snssaiList:
+          - sst: 1
+            sd: ffffff
+          - sst: 1
+            sd: "010203"
+    supportDnnList:
+      - internet
+      - MEC
+    nrfUri: ""  # a valid URI of NRF
+    networkName:
+      full: Gradiant5G
+      short: G5G
+    logger:
+      level: info
+ausf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/ausf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    plmnSupportList:
+      - mcc: 999
+        mnc: 70
+    logger:
+      level: info
+chf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/chf
+    tag: "latest"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    mongodb:
+      url: ""
+    cgf:
+      hostIPv4: ""
+    logger:
+      level: info
+nrf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/nrf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    MongoDBUrl: ""
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    DefaultPlmnId:
+      mcc: 999
+      mnc: 70
+    logger:
+      level: info
+nssf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/nssf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    nssfName: NSSF
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    supportedPlmnList:
+      - mcc: 999
+        mnc: 70
+    supportedNssaiInPlmnList:
+      - plmnId:  # Public Land Mobile Network ID, <PLMN ID> = <MCC><MNC>
+          mcc: 999  # Mobile Country Code (3 digits string, digit: 0~9)
+          mnc: 70  # Mobile Network Code (2 or 3 digits string, digit: 0~9)
+        supportedSnssaiList:  # Supported S-NSSAIs of the PLMN
+          - sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+            sd: ffffff  # Slice Differentiator (3 bytes hex string, range: 000000~FFFFFF)
+          - sst: 1
+            sd: "010203"
+    nsiList:  # List of available Network Slice Instance (NSI)
+      - snssai:  # S-NSSAI of this NSI
+          sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+          sd: ffffff
+        nsiInformationList:  # Information list of this NSI
+          # the NRF to be used to select the NFs/services within the selected NSI, and an optonal ID
+          - nrfId: http://free5gc-nrf-sbi:8000/nnrf-nfm/v1/nf-instances
+            nsiId: 10
+    logger:
+      level: info
+pcf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/pcf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    pcfName: PCF
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    mongodb:
+      url: ""
+    logger:
+      level: info
+smf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/smf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    smfName: SMF
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    snssaiInfos:  # the S-NSSAI (Single Network Slice Selection Assistance Information) list supported by this AMF
+      - sNssai:  # S-NSSAI (Single Network Slice Selection Assistance Information)
+          sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+          sd: ffffff  # Slice Differentiator (3 bytes hex string, range: 000000~FFFFFF)
+        dnnInfos:  # DNN information list
+          - dnn: internet  # Data Network Name
+            dns:  # the IP address of DNS
+              ipv4: 8.8.8.8
+              ipv6: 2001:4860:4860::8888
+    plmnList:  # the list of PLMN IDs that this SMF belongs to (optional, remove this key when unnecessary)
+      - mcc: 999  # Mobile Country Code (3 digits string, digit: 0~9)
+        mnc: 70  # Mobile Network Code (2 or 3 digits string, digit: 0~9)
+    pfcp:  # the IP address of N4 interface on this SMF (PFCP)
+      # addr config is deprecated in smf config v1.0.3, please use the following config
+      nodeID: ""  # the Node ID of this SMF
+      listenAddr: ""  # the IP/FQDN of N4 interface on this SMF (PFCP)
+      externalAddr: ""  # the IP/FQDN of N4 interface on this SMF (PFCP)
+    userplaneInformation:
+      upNodes:
+        UPF:
+          nodeID: ""  # the Node ID of this UPF
+          addr: ""  # the IP/FQDN of N4 interface on this UPF (PFCP)
+          sNssaiUpfInfos:  # S-NSSAI information list for this UPF
+            - sNssai:  # S-NSSAI (Single Network Slice Selection Assistance Information)
+                sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+                sd: ffffff  # Slice Differentiator (3 bytes hex string, range: 000000~FFFFFF)
+              dnnUpfInfoList:  # DNN information list for this S-NSSAI
+                - dnn: internet
+                  pools:
+                    - cidr: 10.60.0.0/16
+                  staticPools:
+                    - cidr: 10.60.100.0/24
+          interfaces:
+            endpoints: ""
+            networkInstances: internet
+    nrfUri: ""  # a valid URI of NRF
+    logger:
+      level: info
+udm:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/udm
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    logger:
+      level: info
+udr:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/udr
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    nrfUri: ""  # a valid URI of NRF
+    mongodb:
+      url: ""
+    logger:
+      level: info
+upf:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/upf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    pfcp:
+      addr: ""  # IP addr for listening
+      nodeID: ""  # External IP or FQDN can be reached
+    gtpu:
+      ifList:
+        name: ""
+    dnnList:
+      - dnn: internet  # Data Network Name
+        cidr: 10.60.0.0/24  # Classless Inter-Domain Routing for assigned IPv4 pool of UE
+    logger:
+      level: info
+webui:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/webui
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    mongodb:
+      url: ""
+    billingServer:
+      hostIPv4: ""
+    logger:
+      level: info
+
+smf2:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/smf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    smfName: SMF2
+    sbi:
+      registerIPv4: ""  # IP used to register to NRF
+      bindingIPv4: ""  # IP used to bind the service
+    snssaiInfos:  # the S-NSSAI (Single Network Slice Selection Assistance Information) list supported by this AMF
+      - sNssai:  # S-NSSAI (Single Network Slice Selection Assistance Information)
+          sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+          sd: "010203"  # Slice Differentiator (3 bytes hex string, range: 000000~FFFFFF)
+        dnnInfos:  # DNN information list
+          - dnn: internet  # Data Network Name
+            dns:  # the IP address of DNS
+              ipv4: 8.8.8.8
+              ipv6: 2001:4860:4860::8888
+    plmnList:  # the list of PLMN IDs that this SMF belongs to (optional, remove this key when unnecessary)
+      - mcc: 999  # Mobile Country Code (3 digits string, digit: 0~9)
+        mnc: 70  # Mobile Network Code (2 or 3 digits string, digit: 0~9)
+    pfcp:  # the IP address of N4 interface on this SMF (PFCP)
+      # addr config is deprecated in smf config v1.0.3, please use the following config
+      nodeID: ""  # the Node ID of this SMF
+      listenAddr: ""  # the IP/FQDN of N4 interface on this SMF (PFCP)
+      externalAddr: ""  # the IP/FQDN of N4 interface on this SMF (PFCP)
+    userplaneInformation:
+      upNodes:
+        UPF:
+          nodeID: ""  # the Node ID of this UPF
+          addr: ""  # the IP/FQDN of N4 interface on this UPF (PFCP)
+          sNssaiUpfInfos:  # S-NSSAI information list for this UPF
+            - sNssai:  # S-NSSAI (Single Network Slice Selection Assistance Information)
+                sst: 1  # Slice/Service Type (uinteger, range: 0~255)
+                sd: "010203"  # Slice Differentiator (3 bytes hex string, range: 000000~FFFFFF)
+              dnnUpfInfoList:  # DNN information list for this S-NSSAI
+                - dnn: internet
+                  pools:
+                    - cidr: 10.60.0.0/16
+                  staticPools:
+                    - cidr: 10.60.100.0/24
+          interfaces:
+            endpoints: ""
+            networkInstances: internet
+    nrfUri: ""  # a valid URI of NRF
+    logger:
+      level: info
+
+upf2:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: free5gc/upf
+    tag: "v3.3.0"
+    digest: ""
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ## e.g:
+    ## pullSecrets:
+    ##   - myRegistryKeySecretName
+    ##
+    pullSecrets: []
+    ## Set to true if you would like to see extra information on logs
+    ##
+    debug: false
+
+  config:
+    pfcp:
+      addr: ""  # IP addr for listening
+      nodeID: ""  # External IP or FQDN can be reached
+    gtpu:
+      ifList:
+        name: ""
+    dnnList:
+      - dnn: internet  # Data Network Name
+        cidr: 10.61.0.0/24  # Classless Inter-Domain Routing for assigned IPv4 pool of UE
+    logger:
+      level: info
